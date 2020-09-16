@@ -1,4 +1,5 @@
 #!/bin/bash
+# comment
 
 declare -A board
 num_rows=3
@@ -14,9 +15,9 @@ print_gameboard(){
 	do
 	    for j in `seq 1 $num_columns`
 	    do
-		printf "%c " ${board[$i,$j]}  
+		printf "%c " ${board[$i,$j]}
 	    done
-	    printf "\n" 
+	    printf "\n"
 	done
 
 }
@@ -27,12 +28,12 @@ make_move(){
     then
         board[$x,$y]=x
     else
-        board[$x,$y]=o 
+        board[$x,$y]=o
     fi
 }
 
 check_gameover(){
-    
+
     if [ ${board[1,1]} != - ] && [ ${board[1,1]} = ${board[1,2]} ] && [ ${board[1,1]} = ${board[1,3]} ]
     then
         game_over=1
@@ -56,10 +57,10 @@ check_gameover(){
         game_over=1
     elif [ ${board[1,3]} != - ] && [ ${board[1,3]} = ${board[2,2]} ] && [ ${board[1,3]} = ${board[3,1]} ]
     then
-        game_over=1 
+        game_over=1
     fi
-    
-   
+
+
 }
 
 convert_move(){
@@ -96,11 +97,11 @@ convert_move(){
             x=3
             y=2
             ;;
-        9) 
+        9)
             x=3
             y=3
             ;;
-    esac       
+    esac
 }
 
 
@@ -110,7 +111,7 @@ for i in `seq 1 $num_rows`
 do
     for j in `seq 1 $num_columns`
     do
-	board[$i,$j]=-  
+	board[$i,$j]=-
     done
 done
 
@@ -135,9 +136,9 @@ do
         else
             printf "Player 1's move: "
             current_player=1
-            read player_move 
+            read player_move
         fi
-   
+
         make_move
         check_gameover
 done
@@ -147,7 +148,7 @@ if test $current_player -eq 1
 then
     printf "Player 1 won!\n"
 else
-    printf "Player 2 won!\n"        
+    printf "Player 2 won!\n"
 fi
 
 
